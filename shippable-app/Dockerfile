@@ -14,13 +14,14 @@ RUN pip install uwsgi flask
 
 #copy app folder to the container
 ADD . /shippable-app/
-WORKDIR /shippable-app/
+
+RUN pip install -r /shippable-app/requirements.txt
 
 # setup and configuration
-run echo "daemon off;" >> /etc/nginx/nginx.conf
-run rm /etc/nginx/sites-enabled/default
-run ln -s /shippable-app/nginx-app.conf /etc/nginx/sites-enabled/
-run ln -s /supervisor-app.conf /etc/supervisor/conf.d/
+#run echo "daemon off;" >> /etc/nginx/nginx.conf
+#run rm /etc/nginx/sites-enabled/default
+#run ln -s /shippable-app/nginx-app.conf /etc/nginx/sites-enabled/
+#run ln -s /supervisor-app.conf /etc/supervisor/conf.d/
 
 RUN pip install -r /shippable-app/requirements.txt
 
