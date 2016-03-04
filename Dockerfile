@@ -24,7 +24,7 @@ RUN cd /shippable-app; pip install -r /shippable-app/requirements.txt
 # run ln -s /supervisor-app.conf /etc/supervisor/conf.d/
 
 # Expose ports
-EXPOSE 80
+EXPOSE 5000
 
 # set the default dir will command will execute
 # when creating a new container

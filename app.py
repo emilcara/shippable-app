@@ -11,6 +11,3 @@ def main():
 if __name__=="__main__":
 	app.run()
 
-'''
-if __name__ == "__main__":
-    app.run(port=80) '''
