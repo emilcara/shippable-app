@@ -13,9 +13,11 @@ RUN apt-get -y install python python-dev python-setuptools nginx python-pip buil
 #RUN pip install uwsgi flask
 
 #copy app folder to the container
-ADD . /shippable-app/
+ADD requirements.txt /shippable-app/requirements.txt
 
-RUN cd /shippable-app; pip install -r /shippable-app/requirements.txt
+RUN cd /shippable-app; pip install -r requirements.txt
+
+ADD . /shippable-app
 
 # setup and configuration
 # run echo "daemon off;" >> /etc/nginx/nginx.conf
