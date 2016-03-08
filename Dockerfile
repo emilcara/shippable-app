@@ -6,11 +6,12 @@ FROM ubuntu:14.04
 MAINTAINER Alex E <alexe@mail.com>
 
 # Update the source list
-RUN apt-get -y update
+RUN apt-get update -y
 
 # Install basic applications
-RUN apt-get -y install python python-dev python-setuptools nginx python-pip build-essential
+RUN apt-get install -y python python-dev python-setuptools nginx python-pip build-essential
 #RUN pip install uwsgi flask
+RUN easy_install pip
 
 #copy app folder to the container
 ADD requirements.txt /shippable-app/requirements.txt
