@@ -14,8 +14,8 @@ pre_ci:
 #    image_tag: latest
 #    pull: false
 
- 
-#ci: 
+
+#ci:
 #post_ci:
 #on_success:
 #on_failure:
@@ -27,9 +27,9 @@ build:
         - docker push emilcara/shippable-app:latest
 
 integrations:
-    hub: 
-      	- integrationName: shippable-app-ecr
-		type: ecr
-		branches: 
-	  	only: 
-	    	- master
+    hub:
+      - integrationName: shippable-app-ecr
+      type: ecr
+      branches:
+        only:
+          - master
