@@ -20,11 +20,11 @@ pre_ci:
 #on_success:
 #on_failure:
 
-build:
-    post_ci:
+#build:
+#    post_ci:
         #Commit the container only if you want all the artifacts from the CI step
-        - docker commit $SHIPPABLE_CONTAINER_NAME emilcara/shippable-app:latest
-        - docker push emilcara/shippable-app:latest
+#        - docker commit $SHIPPABLE_CONTAINER_NAME emilcara/shippable-app:latest
+#        - docker push emilcara/shippable-app:latest
 
 
 
