@@ -9,13 +9,12 @@ MAINTAINER Alex E <alexe@mail.com>
 RUN apt-get update -y
 
 # Install basic applications
-RUN apt-get install -y python python-dev python-setuptools nginx python-pip build-essential
+RUN apt-get install -y python python-dev python-setuptools nginx build-essential
 #RUN pip install uwsgi flask
 RUN easy_install pip
 
 #copy app folder to the container
 ADD requirements.txt /shippable-app/requirements.txt
-
 RUN cd /shippable-app; pip install -r requirements.txt
 
 ADD . /shippable-app
