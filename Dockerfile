@@ -3,21 +3,41 @@
 FROM ubuntu:14.04
 
 #File author/maintainer
-MAINTAINER Alex E <alexe@mail.com>
+MAINTAINER Dockerfiles
 
 # Update the source list
 RUN apt-get update -y
 
 # Install basic applications
-RUN apt-get install -y python python-dev python-setuptools nginx build-essential
-#RUN pip install uwsgi flask
+RUN apt-get install -y build-essential git
+RUN apt-get install -y python python-dev python-setuptools
+RUN apt-get install -y nginx supervisor
 RUN easy_install pip
 
-#copy app folder to the container
-ADD requirements.txt /shippable-app/requirements.txt
-RUN cd /shippable-app; pip install -r requirements.txt
+# install uswsgi
+RUN pip install uwsgi
 
-ADD . /shippable-app
+# install nginx
+RUN apt-get install -y software-properties-common python-software-properties
+RUN apt-get update
+RUN apt-get-repository -y ppa:nginx/stable
+
+# install code
+ADD . /home/shippable-app/
+
+# setup all the configfiles
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+RUN rm /etc/nginx/sites-enabled/default
+RUN ln -s /home/shippable/nginx-app.conf /etc/nginx/sites-enabled/
+RUN ln -s /ome/shippable-app/supervisor-app.conf /etc/supervisor/conf.d/
+
+RUN pip install -r /home/shippable-app/requirements.txt
+
+#copy app folder to the container
+#ADD requirements.txt /shippable-app/requirements.txt
+#RUN cd /shippable-app; pip install -r requirements.txt
+
+#ADD . /shippable-app
 
 # setup and configuration
 # run echo "daemon off;" >> /etc/nginx/nginx.conf
@@ -26,8 +46,9 @@ ADD . /shippable-app
 # run ln -s /supervisor-app.conf /etc/supervisor/conf.d/
 
 # Expose ports
-EXPOSE 5000
+EXPOSE 80
 
 # set the default dir will command will execute
 # when creating a new container
-CMD ["python", "/shippable-app/app.py"]
+#CMD ["python", "/shippable-app/app.py"]
+ CMD ["supervisord", "-n"]
