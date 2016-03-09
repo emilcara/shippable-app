@@ -26,10 +26,7 @@ build:
         - docker build -t shippable-app .
         - docker tag shippable-app:latest 649319949863.dkr.ecr.us-east-1.amazonaws.com/shippable-app:$BUILD_NUMBER
         - docker push 649319949863.dkr.ecr.us-east-1.amazonaws.com/shippable-app:$BUILD_NUMBER
-        #- docker tag -f emilcara/shippable-app:latest emilcara/shippable-app:$BUILD_NUMBER
-        #- docker push emilcara/shippable-app:$BUILD_NUMBER
-        # - docker commit $SHIPPABLE_CONTAINER_NAME emilcara/shippable-app:latest
-#        - docker push emilcara/shippable-app:latest
+        
 
 
 integrations:
