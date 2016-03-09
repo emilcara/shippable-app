@@ -22,7 +22,7 @@ pre_ci:
 
 integrations:
     hub: 
-      - integrationName: shippable-app-ecr 
+      - integrationName: shippable-app-ecr
 	type: ecr
 	branches: 
 	  only: 
