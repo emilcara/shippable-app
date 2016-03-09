@@ -4,3 +4,26 @@ language: python
 # version numbers
 python:
   - "2.7"
+
+
+pre_ci:
+    - docker build -t shippable-app:latest .
+
+#pre_ci_boot:
+#    image_name: shippable-app
+#    image_tag: latest
+#    pull: false
+
+ 
+#ci: 
+#post_ci:
+#on_success:
+#on_failure:
+
+integrations:
+	hub: 
+	 - integrationName: shippable-app-ecr 
+	   type: ecr
+	   branches: 
+	     only: 
+	      - master
