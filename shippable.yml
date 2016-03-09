@@ -26,10 +26,12 @@ build:
         - docker commit $SHIPPABLE_CONTAINER_NAME emilcara/shippable-app:latest
         - docker push emilcara/shippable-app:latest
 
+
+
 integrations:
     hub:
       - integrationName: shippable-app-ecr
-      type: ecr
-      branches:
-        only:
-          - master
+        type: ecr
+        branches:
+          only:
+            - master
