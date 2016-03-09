@@ -20,10 +20,16 @@ pre_ci:
 #on_success:
 #on_failure:
 
+build:
+    post_ci:
+        #Commit the container only if you want all the artifacts from the CI step
+        - docker commit $SHIPPABLE_CONTAINER_NAME emilcara/shippable-app:latest
+        - docker push emilcara/shippable-app:latest
+
 integrations:
     hub: 
-      - integrationName: shippable-app-ecr
-	type: ecr
-	branches: 
-	  only: 
-	    - master
+      	- integrationName: shippable-app-ecr
+		type: ecr
+		branches: 
+	  	only: 
+	    	- master
