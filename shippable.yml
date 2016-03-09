@@ -21,9 +21,9 @@ pre_ci:
 #on_failure:
 
 integrations:
-	hub: 
-	 - integrationName: shippable-app-ecr 
-	   type: ecr
-	   branches: 
-	     only: 
-	      - master
+    hub: 
+      - integrationName: shippable-app-ecr 
+	type: ecr
+	branches: 
+	  only: 
+	    - master
