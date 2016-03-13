@@ -20,7 +20,6 @@ RUN pip install uwsgi
 # install nginx
 RUN apt-get install -y software-properties-common python-software-properties
 RUN apt-get update
-#RUN apt-get-repository -y ppa:nginx/stable
 
 # Copy the application folder inside the container
 ADD /shippable_app /shippable-app
@@ -54,5 +53,5 @@ EXPOSE 80
 
 # set the default dir will command will execute
 # when creating a new container
-CMD ["python", "/shippable-app/app.py"]
+CMD ["python", "/shippable-app/wsgi.py"]
 #CMD ["supervisord", "-n"]
