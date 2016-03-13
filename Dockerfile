@@ -46,6 +46,9 @@ RUN pip install -r /shippable-app/requirements.txt
 # run ln -s /shippable-app/nginx-app.conf /etc/nginx/sites-enabled/
 # run ln -s /supervisor-app.conf /etc/supervisor/conf.d/
 
+# set default dir where CMD will run
+WORKDIR /shippable-app
+
 # Expose ports
 EXPOSE 80
 
