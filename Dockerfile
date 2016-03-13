@@ -20,7 +20,7 @@ RUN pip install uwsgi
 # install nginx
 RUN apt-get install -y software-properties-common python-software-properties
 RUN apt-get update
-RUN apt-get-repository -y ppa:nginx/stable
+#RUN apt-get-repository -y ppa:nginx/stable
 
 # Copy the application folder inside the container
 ADD /shippable_app /shippable-app
