@@ -22,16 +22,17 @@ RUN apt-get install -y software-properties-common python-software-properties
 RUN apt-get update
 RUN apt-get-repository -y ppa:nginx/stable
 
-# install code
-ADD . /home/shippable-app/
+# Copy the application folder inside the container
+ADD /shippable_app /shippable-app
+
+RUN pip install -r /shippable-app/requirements.txt
 
 # setup all the configfiles
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-RUN rm /etc/nginx/sites-enabled/default
-RUN ln -s /home/shippable/nginx-app.conf /etc/nginx/sites-enabled/
-RUN ln -s /ome/shippable-app/supervisor-app.conf /etc/supervisor/conf.d/
+#RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+#RUN rm /etc/nginx/sites-enabled/default
+#RUN ln -s /home/shippable/nginx-app.conf /etc/nginx/sites-enabled/
+#RUN ln -s /ome/shippable-app/supervisor-app.conf /etc/supervisor/conf.d/
 
-RUN pip install -r /home/shippable-app/requirements.txt
 
 #copy app folder to the container
 #ADD requirements.txt /shippable-app/requirements.txt
@@ -50,5 +51,5 @@ EXPOSE 80
 
 # set the default dir will command will execute
 # when creating a new container
-#CMD ["python", "/shippable-app/app.py"]
- CMD ["supervisord", "-n"]
+CMD ["python", "/shippable-app/app.py"]
+#CMD ["supervisord", "-n"]
