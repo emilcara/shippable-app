@@ -22,7 +22,7 @@ RUN apt-get install -y software-properties-common python-software-properties
 RUN apt-get update
 
 # Copy the application folder inside the container
-ADD /shippable_app /shippable-app
+ADD /shippable-app /shippable-app
 
 RUN pip install -r /shippable-app/requirements.txt
 
